@@ -1,3 +1,3 @@
-describe DockingStation do 
-	
+class DockingStation 
+
 end
