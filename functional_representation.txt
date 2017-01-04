@@ -1,0 +1,32 @@
+Nouns:
+ - User
+  * find_customer
+    ** by_name
+    ** by_card_details
+    ** by_terminal / by_bike_used
+    ** by_membership_number
+  * get_report_of
+    -> stolen_bikes
+    -> faulty_bikes
+      - faulty_bikes_communicate_to_repairer (Message to Repairer)
+    -> faulty_payment_machines
+      - faulty_payment_machines_to_repairer (Message to Repairer)
+  * prepare_accounting_database
+ - Customer
+  * use_a_bike
+    -> pick_up_a_bike
+      - see_if_bike_is_working
+    -> release_a_bike
+    -> pay_for_a_bike
+    -> return_a_bike
+    -> report_a_broken_bike (Message to User)
+  * subscribe_for_membership (Message to User)
+  * check_history_of_usage
+  * check_a_bike_map
+ - Repairer
+  * repair_bikes
+    -> get_message_about_faulty_bikes (Message from User)
+    -> check_bikes
+      - report_replacement (Message to User)
+      - report_repair (Message to User)
+    -> invoice_user (Message to User)
