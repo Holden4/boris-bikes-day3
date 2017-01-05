@@ -1,3 +1,4 @@
 --color
 --require spec_helper
 --require docking_station_spec
+-fd
