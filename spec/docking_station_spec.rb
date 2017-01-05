@@ -6,9 +6,9 @@ describe DockingStation do
   describe '#release_bike' do
     it { is_expected.to respond_to :release_bike }
 
-    it 'returns a docked bike' do
+    it 'releases a docked bike' do
       subject.dock(bike)
-      expect(subject.bike).to eq bike
+      expect(subject.release_bike).to eq bike
     end
 
     it 'raises an error if no bikes available' do
@@ -17,7 +17,7 @@ describe DockingStation do
   end
 
   describe '#working?' do
-    it "release working bike" do
+    it "checks the bike is working" do
       expect(bike).to be_working
     end
   end
@@ -28,6 +28,12 @@ describe DockingStation do
     it 'docks the given bike' do
       expect(subject.dock(bike)).to eq bike
     end
+
+    it 'raises an error if one bike already docked' do
+      subject.dock(bike)
+      expect { subject.dock(bike) }.to raise_error(RuntimeError, 'Station is full!')
+    end
+
   end
 
 end
