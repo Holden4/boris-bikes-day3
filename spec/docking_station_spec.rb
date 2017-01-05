@@ -1,15 +1,11 @@
 require 'docking_station'
 
-describe DockingStation do 
+describe DockingStation do
 
- it { should respond_to :release_bike }
+ it { is_expected.to respond_to :release_bike }
 
- it 'Gets a bike' do 
- 	docking_station.release_bike should be_a(Bike)
+ it "release working bike" do
+   bike = subject.release_bike
+   expect(bike).to be_working
  end
-
- it { should respond_to (working?) }
- it release_bike is_bike
- should respond_to(working?)
 end
-
