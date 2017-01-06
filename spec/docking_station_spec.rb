@@ -28,7 +28,9 @@ describe DockingStation do
     it 'docks the given bike' do
       expect(subject.dock(bike)).to include bike
     end
+  end
 
+  context "Tests for default capacity" do
     it 'raises an error if default bike capacity is full' do
       (DockingStation::DEFAULT_CAPACITY).times {subject.dock(bike)}
       expect { subject.dock(bike) }.to raise_error(RuntimeError, 'Station is full!')
@@ -36,4 +38,9 @@ describe DockingStation do
 
   end
 
+  context "Tests for specified capacity" do
+    it 'Docking station can be created with a specified capacity' do
+      expect(DockingStation.new(50)).not_to raise_error
+    end
+  end
 end
