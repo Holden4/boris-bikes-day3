@@ -29,8 +29,8 @@ describe DockingStation do
       expect(subject.dock(bike)).to include bike
     end
 
-    it 'raises an error if 20 bike capacity is full' do
-      20.times {subject.dock(bike)}
+    it 'raises an error if default bike capacity is full' do
+      (subject::DEFAULT_CAPACITY).times {subject.dock(bike)}
       expect { subject.dock(bike) }.to raise_error(RuntimeError, 'Station is full!')
     end
 
